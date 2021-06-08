@@ -40,10 +40,3 @@ body {
     background-color: rgba(5,5,5,.8);
     transition: transform 800ms;
 }
-
-.constop:hover {
-    transform: scale(2.0);
-}
-
-
-
