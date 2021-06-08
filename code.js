@@ -1,26 +1,35 @@
-const container = document.querySelector('.hour');
-const btn = document.querySelector('.constop');
-let id = 0;
+window.addEventListener('DOMContentLoaded', () => {
+	const container = document.querySelector('.hour');
+	const btn = document.querySelector('.constop');
+	// let id = 0;
 
-const updateHour = setInterval(() => {
-	const date = new Date();
-	container.innerHTML = `${date.getHours()} : ${date.getMinutes()} : ${date.getSeconds()}`;
-}, 1000);
-
-
-btn.addEventListener('click', e => {
-	if (btn.innerText === 'Stop') {
-		clearInterval(1);
-	 	btn.innerText = 'Continue';
-	 // id++;
-	} else if (btn.innerText === 'Continue') {
-		const updateHour = setInterval(() => {
+	const updateHour = setInterval(() => {
 		const date = new Date();
 		container.innerHTML = `${date.getHours()} : ${date.getMinutes()} : ${date.getSeconds()}`;
-		}, 1000);
-		btn.innerText = 'Stop';
-	};
+		let id = 1;
+	}, 1000);
 
-	e.preventDefault();
-});
 
+	btn.addEventListener('click', e => {
+
+		if (btn.innerText === 'Continue') {
+			const updateHour = setInterval(() => {
+			const date = new Date();
+			container.innerHTML = `${date.getHours()} : ${date.getMinutes()} : ${date.getSeconds()}`;
+			}, 1000);
+			let id = 1;
+			btn.innerText = 'Stop';
+		} else if (btn.innerText === 'Stop') {
+			for (i=0; i<100; i++) {
+    			window.clearInterval(i);
+    			btn.innerText = 'Continue';
+			}
+
+			
+		}
+
+		e.preventDefault();
+	});
+
+
+})
